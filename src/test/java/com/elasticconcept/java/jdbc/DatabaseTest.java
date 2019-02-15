@@ -2,7 +2,7 @@ package com.elasticconcept.java.jdbc;
 
 import org.junit.Test;
 
-import com.elasticconcept.connection.SingleConnection;
+import com.elasticconcept.java.jdbc.connection.SingleConnection;
 
 public class DatabaseTest {
 

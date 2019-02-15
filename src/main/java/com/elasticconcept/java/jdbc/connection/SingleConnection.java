@@ -1,4 +1,4 @@
-package com.elasticconcept.connection;
+package com.elasticconcept.java.jdbc.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
