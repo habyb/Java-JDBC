@@ -1,0 +1,8 @@
+/com/
+
+# Java
+*.class
+# packages
+*.jar
+*.war
+*.ear
