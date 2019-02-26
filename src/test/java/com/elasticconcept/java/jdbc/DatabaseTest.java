@@ -51,4 +51,21 @@ public class DatabaseTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void initUpdate() {
+		
+		try {
+			UserDAO dao = new UserDAO();
+			
+			User objectDB = dao.search(5L);
+			
+			objectDB.setName("Updated name with update method");
+			
+			dao.update(objectDB);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

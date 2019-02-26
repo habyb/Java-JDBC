@@ -82,4 +82,26 @@ public class UserDAO {
 		
 		return result;
 	}
+	
+	public void update(User user) {
+		
+		String sql = "UPDATE user_jdbc SET name = ? WHERE id = " + user.getId();
+		
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, user.getName());
+			
+			statement.execute();
+			connection.commit();
+			
+		} catch (SQLException e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+		
+	}
 }
