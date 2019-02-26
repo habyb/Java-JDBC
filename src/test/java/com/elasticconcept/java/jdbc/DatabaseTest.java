@@ -15,9 +15,8 @@ public class DatabaseTest {
 		UserDAO userDAO = new UserDAO();
 		User user = new User();
 		
-		user.setId(6L);
-		user.setName("Robert");
-		user.setEmail("robert@robert.com");
+		user.setName("Kyle");
+		user.setEmail("me@kyle.com");
 		
 		userDAO.save(user);
 	}

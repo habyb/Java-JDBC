@@ -21,14 +21,13 @@ public class UserDAO {
 	
 	public void save(User user) {
 		
-		String sql = "INSERT INTO user_jdbc (id, name, email) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO user_jdbc (name, email) VALUES (?, ?)";
 		
 		try {
 			PreparedStatement insert = connection.prepareStatement(sql);
 			
-			insert.setLong(1, user.getId());
-			insert.setString(2, user.getName());
-			insert.setString(3, user.getEmail());
+			insert.setString(1, user.getName());
+			insert.setString(2, user.getEmail());
 			insert.execute();
 			
 			connection.commit();
