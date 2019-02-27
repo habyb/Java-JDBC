@@ -103,4 +103,24 @@ public class UserDAO {
 		}
 		
 	}
+	
+	public void delete(Long id) {
+		
+		try {
+			
+			String sql = "DELETE FROM user_jdbc WHERE id = " + id;
+			PreparedStatement prepareStatement = connection.prepareStatement(sql);
+			prepareStatement.execute();
+			
+			connection.commit();
+		} catch (Exception e) {
+			
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+	}
 }

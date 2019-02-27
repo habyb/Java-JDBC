@@ -67,4 +67,15 @@ public class DatabaseTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void initDelete() {
+		
+		try {
+			UserDAO dao = new UserDAO();
+			dao.delete(6L);
+		} catch (Exception e) {
+			
+		}
+	}
 }
