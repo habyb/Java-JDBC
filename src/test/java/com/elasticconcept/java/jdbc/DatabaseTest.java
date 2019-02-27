@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.elasticconcept.java.jdbc.dao.UserDAO;
+import com.elasticconcept.java.jdbc.model.Phone;
 import com.elasticconcept.java.jdbc.model.User;
 
 public class DatabaseTest {
@@ -77,5 +78,17 @@ public class DatabaseTest {
 		} catch (Exception e) {
 			
 		}
+	}
+	
+	@Test
+	public void insertPhone() {
+		
+		Phone phone = new Phone();
+		phone.setNumber("(21) 4356 7533");
+		phone.setType("casa");
+		phone.setPersonuser(9L);
+		
+		UserDAO dao = new UserDAO();
+		dao.savePhone(phone);
 	}
 }

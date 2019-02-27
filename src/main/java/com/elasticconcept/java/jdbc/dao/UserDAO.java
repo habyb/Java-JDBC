@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.elasticconcept.java.jdbc.connection.SingleConnection;
+import com.elasticconcept.java.jdbc.model.Phone;
 import com.elasticconcept.java.jdbc.model.User;
 
 public class UserDAO {
@@ -40,6 +41,30 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void savePhone(Phone phone) {
+	
+		try {
+			
+			String sql = "INSERT INTO public.user_phone (\"number\", \"type\", personuser) VALUES(?, ?, ?);";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, phone.getNumber());
+			statement.setString(2, phone.getType());
+			statement.setLong(3, phone.getPersonuser());
+			
+			statement.execute();
+			connection.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+		}
 	}
 	
 	public List<User> list() throws Exception {
