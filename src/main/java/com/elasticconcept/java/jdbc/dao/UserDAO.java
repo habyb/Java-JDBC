@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.elasticconcept.java.jdbc.connection.SingleConnection;
+import com.elasticconcept.java.jdbc.model.BeanUserPhone;
 import com.elasticconcept.java.jdbc.model.Phone;
 import com.elasticconcept.java.jdbc.model.User;
 
@@ -105,6 +106,35 @@ public class UserDAO {
 		}
 		
 		return result;
+	}
+	
+	public List<BeanUserPhone> listUserPhone(Long idUser) {
+		
+		List<BeanUserPhone> beanUserPhone = new ArrayList<BeanUserPhone>();
+		
+		String sql = "select name, number, email from user_phone as up\n" + 
+				"	inner join user_jdbc as u\n" + 
+				"	on up.personuser = u.id\n" + 
+				"	where u.id = " + idUser;
+		
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			ResultSet resultSet = statement.executeQuery();
+			
+			while(resultSet.next()) {
+				BeanUserPhone userPhone = new BeanUserPhone();
+				
+				userPhone.setName(resultSet.getString("name"));
+				userPhone.setNumber(resultSet.getString("number"));
+				userPhone.setEmail(resultSet.getString("email"));
+				
+				beanUserPhone.add(userPhone);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return beanUserPhone;
 	}
 	
 	public void update(User user) {

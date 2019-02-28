@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.elasticconcept.java.jdbc.dao.UserDAO;
+import com.elasticconcept.java.jdbc.model.BeanUserPhone;
 import com.elasticconcept.java.jdbc.model.Phone;
 import com.elasticconcept.java.jdbc.model.User;
 
@@ -90,5 +91,19 @@ public class DatabaseTest {
 		
 		UserDAO dao = new UserDAO();
 		dao.savePhone(phone);
+	}
+	
+	@Test
+	public void testLoadingUserPhone() {
+		
+		UserDAO dao = new UserDAO();
+		
+		List<BeanUserPhone> beanUserPhones = dao.listUserPhone(9L);
+		
+		for(BeanUserPhone beanUserPhone : beanUserPhones) {
+			
+			System.out.println(beanUserPhone);
+			System.out.println("---");
+		}
 	}
 }
