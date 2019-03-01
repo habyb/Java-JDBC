@@ -178,4 +178,29 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deletePhonesByUser(Long idUser) {
+		
+		String sqlPhone = "DELETE FROM user_phone WHERE personuser = " + idUser;
+		
+		String sqlUser = "DELETE FROM user_jdbc WHERE id = " + idUser;
+		
+		try {
+			PreparedStatement prepareStatement = connection.prepareStatement(sqlPhone);
+			prepareStatement.executeUpdate();
+			connection.commit();
+			
+			prepareStatement = connection.prepareStatement(sqlUser);
+			prepareStatement.executeUpdate();
+			connection.commit();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
 }

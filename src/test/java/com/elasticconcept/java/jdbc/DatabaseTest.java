@@ -106,4 +106,12 @@ public class DatabaseTest {
 			System.out.println("---");
 		}
 	}
+	
+	@Test
+	public void testDeleteUserPhone() {
+		
+		UserDAO dao = new UserDAO();
+		
+		dao.deletePhonesByUser(8L);
+	}
 }
